@@ -1,10 +1,22 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
+const fs = require('fs');
+
 // Use /tmp for Vercel serverless environment since it's the only writable directory
-const dbPath = process.env.NODE_ENV === 'production'
-  ? path.join('/tmp', 'users.db')
-  : path.join(__dirname, 'users.db');
+let dbPath;
+if (process.env.NODE_ENV === 'production') {
+  dbPath = path.join('/tmp', 'users.db');
+  // Copy the initial database over to /tmp if it doesn't exist yet
+  if (!fs.existsSync(dbPath)) {
+    const initialDbPath = path.join(__dirname, 'users.db');
+    if (fs.existsSync(initialDbPath)) {
+      fs.copyFileSync(initialDbPath, dbPath);
+    }
+  }
+} else {
+  dbPath = path.join(__dirname, 'users.db');
+}
 
 const db = new Database(dbPath);
 
