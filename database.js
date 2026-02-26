@@ -1,7 +1,12 @@
 const Database = require('better-sqlite3');
 const path = require('path');
 
-const db = new Database(path.join(__dirname, 'users.db'));
+// Use /tmp for Vercel serverless environment since it's the only writable directory
+const dbPath = process.env.NODE_ENV === 'production'
+  ? path.join('/tmp', 'users.db')
+  : path.join(__dirname, 'users.db');
+
+const db = new Database(dbPath);
 
 // Enable WAL mode for better performance
 db.pragma('journal_mode = WAL');
