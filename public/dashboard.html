@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="dashboard-card">
+      <div class="dashboard-header">
+        <h1>Dashboard</h1>
+        <button class="btn-logout" onclick="logout()">Sign Out</button>
+      </div>
+
+      <div id="userAvatar" class="user-avatar"></div>
+      <p class="welcome-msg" id="welcomeMsg">Loading...</p>
+
+      <div class="user-info" id="userInfo">
+        <div class="info-item">
+          <label>First Name</label>
+          <span id="infoFirstName">-</span>
+        </div>
+        <div class="info-item">
+          <label>Last Name</label>
+          <span id="infoLastName">-</span>
+        </div>
+        <div class="info-item">
+          <label>Username</label>
+          <span id="infoUsername">-</span>
+        </div>
+        <div class="info-item">
+          <label>Email</label>
+          <span id="infoEmail">-</span>
+        </div>
+        <div class="info-item">
+          <label>Phone</label>
+          <span id="infoPhone">-</span>
+        </div>
+        <div class="info-item">
+          <label>Member Since</label>
+          <span id="infoCreated">-</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
