@@ -20,8 +20,12 @@ if (process.env.NODE_ENV === 'production') {
 
 const db = new Database(dbPath);
 
-// Enable WAL mode for better performance
-db.pragma('journal_mode = WAL');
+// Disable WAL mode for Vercel serverless environment because WAL creates
+// users.db-wal and users.db-shm files, which are not copied to /tmp in the
+// fs.copyFileSync block above, leading to corrupted or missing data on cold starts.
+if (process.env.NODE_ENV !== 'production') {
+  db.pragma('journal_mode = WAL');
+}
 
 // Create users table
 db.exec(`
