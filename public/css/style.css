@@ -31,7 +31,6 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
-  overflow: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -174,8 +173,15 @@ body {
 }
 
 @keyframes slideDown {
-  from { opacity: 0; transform: translateY(-8px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .alert.error {
@@ -230,7 +236,7 @@ body {
   display: none;
   width: 18px;
   height: 18px;
-  border: 2px solid rgba(255,255,255,0.3);
+  border: 2px solid rgba(255, 255, 255, 0.3);
   border-top-color: white;
   border-radius: 50%;
   animation: spin 0.6s linear infinite;
@@ -246,7 +252,9 @@ body {
 }
 
 @keyframes spin {
-  to { transform: rotate(360deg); }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 /* ===== Links ===== */
@@ -405,13 +413,17 @@ body {
 
 /* ===== Responsive ===== */
 @media (max-width: 520px) {
-  .auth-card, .dashboard-card {
+
+  .auth-card,
+  .dashboard-card {
     padding: 32px 24px;
   }
+
   .form-row {
     flex-direction: column;
     gap: 0;
   }
+
   .user-info {
     grid-template-columns: 1fr;
   }
